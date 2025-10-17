@@ -1,19 +1,12 @@
 /**
- * Copyright 2022 Charly Delay <charly@codesink.dev> (@0xcharly)
+ * Charybdis keymap — base layer converted to Carpalx QGMLWB
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
+ * Carpalx QGMLWB (10-letter home row variant) mapping applied to LAYER_BASE.
+ * Other layers left unchanged.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * Sources for QGMLWB mapping: Carpalx project and a QGMLWB mapping reference.
  */
+
 #include QMK_KEYBOARD_H
 
 enum charybdis_keymap_layers {
@@ -45,13 +38,23 @@ static uint16_t auto_pointer_layer_timer = 0;
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  /* LAYER_BASE (Carpalx QGMLWB)
+   *
+   * Mapping rationale (QWERTY positions → QGMLWB chars):
+   * Top row:  Q W E R T   Y U I O P    -> q g m l w   b y u v ;
+   * Home row: A S D F G   H J K L ;    -> d s t n r   i a e o h
+   * Bot row:  Z X C V B   N M , . /    -> z x c f j   k p , . /
+   *
+   * (taken from the QGMLWB reference). This means the physical key
+   * that used to send 'w' will now send 'g', etc.
+   */
   [LAYER_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_LGUI,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_RGUI,
+       KC_LGUI,    KC_Q,    KC_G,    KC_M,    KC_L,    KC_W,       KC_B,    KC_Y,    KC_U,    KC_V,    KC_SCLN, KC_RGUI,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_RCTL,
+       KC_LCTL,    KC_D,    KC_S,    KC_T,    KC_N,    KC_R,       KC_I,    KC_A,    KC_E,    KC_O, KC_H,    KC_RCTL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LSFT,    PT_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, PT_SLSH, KC_RSFT,
+       KC_LSFT,    PT_Z,    KC_X,    KC_C,    KC_F,    KC_J,       KC_K,    KC_P, KC_COMM,  KC_DOT, PT_SLSH, KC_RSFT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BSPC,  KC_SPC,   LOWER,      RAISE,  KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
