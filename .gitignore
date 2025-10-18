@@ -7,5 +7,5 @@
 
 # Firmware files
 *.hex
-*.bin
+#*.bin
 *.uf2
