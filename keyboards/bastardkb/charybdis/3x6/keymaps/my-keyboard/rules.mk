@@ -1,0 +1,2 @@
+VIA_ENABLE = yes
+CONVERT_TO_UF2 = yes

@@ -8,4 +8,4 @@
 # Firmware files
 *.hex
 #*.bin
-*.uf2
+#*.uf2
