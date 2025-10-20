@@ -50,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [LAYER_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       MT(MOD_LGUI, KC_ESC),    KC_Q,    KC_G,    KC_M,    KC_L,    KC_W,    KC_B,    KC_Y,    KC_U,    KC_V,  KC_SCLN, RAISE,
+       MT(MOD_LGUI, KC_TAB),    KC_Q,    KC_G,    KC_M,    KC_L,    KC_W,    KC_B,    KC_Y,    KC_U,    KC_V,  KC_SCLN, RAISE,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       MT(MOD_LSFT, KC_TAB),    KC_D,    KC_S,    KC_T,    KC_N,    KC_R,       KC_I,    KC_A,    KC_E,    KC_O, KC_H,    KC_RSFT,
+       MT(MOD_LSFT, KC_ESC),    KC_D,    KC_S,    KC_T,    KC_N,    KC_R,       KC_I,    KC_A,    KC_E,    KC_O, KC_H,    KC_RSFT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LCTL,    PT_Z,    KC_X,    KC_C,    KC_F,    KC_J,       KC_K,    KC_P, KC_COMM,  KC_DOT, PT_SLSH, KC_RCTL,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
@@ -62,9 +62,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_LOWER] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       MT(KC_LGUI, KC_ESC), KC_F10, KC_F7, KC_F4, KC_F1, RGB_TOG,   KC_LBRC,  KC_7,  KC_8,  KC_9, KC_0, KC_RBRC,
+       MT(MOD_LGUI, KC_TAB), KC_F10, KC_F7, KC_F4, KC_F1, RGB_TOG,   KC_LBRC,  KC_7,  KC_8,  KC_9, KC_0, KC_RBRC,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       MT(KC_LSFT, KC_TAB),  KC_F11,  KC_F8,  KC_F5,  KC_F2,  XXXXXXX,       KC_EQL,  KC_4,  KC_5,  KC_6, KC_MINS, KC_GRV,
+       MT(MOD_LSFT, KC_ESC), KC_F11, KC_F8, KC_F5,  KC_F2,  XXXXXXX,       KC_EQL,  KC_4,  KC_5,  KC_6, KC_MINS, KC_GRV,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LCTL,   KC_F12,   KC_F9,   KC_F6,  KC_F3, QK_BOOT,    KC_PAST,  KC_1,  KC_2,  KC_3, KC_SLSH, KC_BSLS,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
