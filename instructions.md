@@ -97,8 +97,25 @@ cd /home/gespitia/projects/bastardkb-qmk
 qmk compile -c -kb bastardkb/charybdis/3x6 -km my-keyboard
 ```
 
-#### Method 2: Direct Keymap Copy (Alternative)
-If userspace overlay isn't working, you can copy the keymap directly:
+#### Method 2: Symlink Keymap (Better Alternative)
+If userspace overlay isn't working, you can symlink the keymap directory:
+
+```bash
+# Create symlink from BastardKB QMK to your userspace keymap
+ln -s /home/gespitia/projects/qmk_userspace/keyboards/bastardkb/charybdis/3x6/keymaps/my-keyboard /home/gespitia/projects/bastardkb-qmk/keyboards/bastardkb/charybdis/3x6/keymaps/my-keyboard
+
+# Navigate to BastardKB QMK directory and compile
+cd /home/gespitia/projects/bastardkb-qmk
+qmk compile -c -kb bastardkb/charybdis/3x6 -km my-keyboard
+```
+
+**Advantages of symlinking:**
+- Single source of truth - no duplicate files
+- Automatic updates - changes in userspace immediately available
+- No manual copying needed after initial setup
+
+#### Method 3: Direct Copy (Last Resort)
+Only if symlink doesn't work on your system:
 
 ```bash
 # Copy your keymap to the BastardKB QMK fork
@@ -109,7 +126,7 @@ cd /home/gespitia/projects/bastardkb-qmk
 qmk compile -c -kb bastardkb/charybdis/3x6 -km my-keyboard
 ```
 
-**Note:** Method 2 bypasses the userspace system entirely and works even if userspace overlay configuration fails.
+**Note:** Method 2 (symlink) is preferred over copying as it maintains a single source of truth.
 
 **Expected Output:**
 - Compilation should complete successfully
@@ -238,3 +255,29 @@ qmk compile -c -kb bastardkb/charybdis/3x6 -km my-keyboard
 
 
 
+----
+
+## TL;DR 
+
+_Oct 20, 2025_
+
+
+```My setup commands for context:
+
+cd /home/USERNAME/projects && git clone https://github.com/bastardkb/bastardkb-qmk
+cd /home/USERNAME/projects/bastardkb-qmk && git checkout -b bkb-master origin/bkb-master
+qmk git-submodule
+qmk config user.qmk_home="$(realpath .)"
+cd /home/USERNAME/projects/qmk_userspace && qmk config user.overlay_dir="$(realpath .)"
+ln -s /home/USERNAME/projects/qmk_userspace/keyboards/bastardkb/charybdis/3x6/keymaps/my-keyboard /home/USERNAME/projects/bastardkb-qmk/keyboards/bastardkb/charybdis/3x6/keymaps/my-keyboard
+cd /home/USERNAME/projects/bastardkb-qmk
+qmk config
+#user.overlay_dir=/home/USERNAME/projects/qmk_userspace
+#user.qmk_home=/home/USERNAME/projects/bastardkb-qmk
+qmk compile -c -kb bastardkb/charybdis/3x6 -km my-keyboard
+
+```
+
+Make sure you clear eeprom when compiling and flashing new firmware. Easiest way to do this is to enter bootloader via bootmagic (hold down top leftmost key on the left half or top rightmost key on the right half while connecting to USB)
+Alternatively if you're compiling and flashing your own firmware, just disable via.
+The dynamic keymap and associated parts are stored in persistent memory, and this is not repopulated from the flash memory automatically.
