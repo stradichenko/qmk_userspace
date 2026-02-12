@@ -328,3 +328,13 @@ The firmware with RGB lighting control is now ready and can be flashed to your k
 
 ---
 
+cd /home/USERNAME/projects && git clone https://github.com/bastardkb/bastardkb-qmk
+cd /home/USERNAME/projects/bastardkb-qmk && git checkout -b bkb-master origin/bkb-master
+qmk git-submodule
+qmk config user.qmk_home="$(realpath .)"
+cd /home/USERNAME/projects/qmk_userspace && qmk config user.overlay_dir="$(realpath .)"
+ln -s /home/USERNAME/projects/qmk_userspace/keyboards/bastardkb/charybdis/3x6/keymaps/my-keyboard /home/USERNAME/projects/bastardkb-qmk/keyboards/bastardkb/charybdis/3x6/keymaps/my-keyboard
+cd /home/USERNAME/projects/bastardkb-qmk
+qmk compile -c -kb bastardkb/charybdis/3x6 -km my-keyboard
+
+https://docs.bastardkb.com/fw/compile-firmware.html
